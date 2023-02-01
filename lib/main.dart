@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:todo_project/todo.dart';
-
-
 
 List<String> _txtList = [];
 
@@ -28,7 +25,70 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.transparent,
       )),
       debugShowCheckedModeBanner: false,
-      home: MyTodoPage(),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            flex: 1,
+            child: Column(
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyTodoPage()),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: const Text(
+                      '오늘 할 일',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Flexible(
+            flex: 1,
+            child: Center(
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyTodoPage()),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: const Text(
+                    '오늘 할 일',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -58,6 +118,7 @@ class _MyTodoPageState extends State<MyTodoPage> {
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
     final double deviceHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 236, 236, 236),
       resizeToAvoidBottomInset: true,
